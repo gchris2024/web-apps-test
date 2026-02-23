@@ -1,0 +1,4 @@
+Prompt: What exactly is a deep watcher (in Vue)?
+Response: A deep watcher in Vue is a watcher that observes not only the top-level property but also all nested properties within an object or array. By setting deep: true, Vue will track changes to any nested value, not just the reference to the object/array itself.
+
+No prompts for code generation, just built-in Copilot autocomplete.
