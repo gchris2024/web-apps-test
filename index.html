@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sticky Notes (Simple)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="app">
+      <header class="toolbar">
+        <button class="btn" @click="addStickie">+ Add Note</button>
+        <button class="btn danger" @click="clearAll">Clear All</button>
+      </header>
+
+      <p v-if="stickies.length === 0" class="empty">
+        No notes yet. Click <strong>Add Note</strong>.
+      </p>
+
+      <section class="grid" v-else>
+        <article class="note" v-for="stickie in stickies" :key="stickie.id">
+          <textarea
+            v-model="stickie.text"
+            placeholder="Type your note…"
+          ></textarea>
+
+          <div class="note-footer">
+            <span class="meta"> Chars: {{ charCount(stickie.text) }} </span>
+
+            <button class="btn small" @click="deleteStickie(stickie.id)">
+              Delete
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
