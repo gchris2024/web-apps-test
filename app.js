@@ -7,22 +7,11 @@ Vue.createApp({
   },
 
   mounted() {
-    // ================================
-    // COMMIT 2 — Render Notes ONLY
-    // ================================
-    //
-    // For Commit 2:
-    // - DO NOT use localStorage yet.
-    // - Temporarily hard-code TWO example notes here
-    //   so that rendering, v-for, v-model and the
-    //   character counter can be tested.
-    //
-    // Example structure:
-    //
-    // this.stickies = [
-    //   { id: 1, text: "Test note 1" },
-    //   { id: 2, text: "Another note" }
-    // ];
+
+    this.stickies = [
+      { id: 1, text: "Test note 1" },
+      { id: 2, text: "Another note" }
+    ];
     //
     // In Commit 3:
     // - REMOVE these hard-coded notes.
@@ -74,7 +63,6 @@ Vue.createApp({
     // ================================
 
     charCount(text) {
-      // This is already complete.
       // Returns the length of the text or 0 if empty.
       return (text ?? "").length;
     },
