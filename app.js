@@ -22,16 +22,11 @@ Vue.createApp({
       this.stickies = this.stickies.filter((stickie) => stickie.id !== id);
     },
 
-    // ================================
-    // COMMIT 5 — Clear All
-    // ================================
-
     clearAll() {
-      // TODO (Commit 5):
-      // 1. Use confirm("Delete all notes?")
-      // 2. If confirmed:
-      //    - Clear the stickies array
-      //    - Remove the localStorage item using this.storageKey
+      if (confirm("Delete all notes?")) {
+        this.stickies = [];
+        localStorage.removeItem(this.storageKey);
+      }
     },
 
     // ================================
@@ -42,10 +37,6 @@ Vue.createApp({
       // Returns the length of the text or 0 if empty.
       return (text ?? "").length;
     },
-
-    // ================================
-    // COMMIT 4 — Persistence
-    // ================================
 
     saveToStorage() {
       // Save this.stickies to localStorage.
