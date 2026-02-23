@@ -7,8 +7,7 @@ Vue.createApp({
   },
 
   mounted() {
-    // In Commit 4:
-    // - Replace this with a call to loadFromStorage().
+    this.loadFromStorage();
   },
 
   methods: {
@@ -49,33 +48,21 @@ Vue.createApp({
     // ================================
 
     saveToStorage() {
-      // TODO (Commit 4):
       // Save this.stickies to localStorage.
-      //
-      // Must use:
-      // JSON.stringify(...)
+      localStorage.setItem(this.storageKey, JSON.stringify(this.stickies));
     },
 
     loadFromStorage() {
-      // TODO (Commit 4):
       // Load notes from localStorage.
-      //
-      // Must:
-      // - Use JSON.parse(...)
-      // - If nothing exists, set this.stickies = []
-      //
-      // In Commit 4:
-      // - Call this method from mounted().
-      // - Remove hard-coded notes from Commit 2.
+      const storedStickies = localStorage.getItem(this.storageKey);
+      this.stickies = storedStickies ? JSON.parse(storedStickies) : [];
     },
   },
 
   watch: {
     stickies: {
       handler() {
-        // TODO (Commit 4):
-        // Call this.saveToStorage() here so edits
-        // auto-save without clicking any button.
+        this.saveToStorage();
       },
       deep: true,
     },
