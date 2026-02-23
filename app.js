@@ -7,43 +7,20 @@ Vue.createApp({
   },
 
   mounted() {
-
-    this.stickies = [
-      { id: 1, text: "Test note 1" },
-      { id: 2, text: "Another note" }
-    ];
-    //
-    // In Commit 3:
-    // - REMOVE these hard-coded notes.
-    // - DO NOT keep them in the final version.
-    //
     // In Commit 4:
     // - Replace this with a call to loadFromStorage().
   },
 
   methods: {
-    // ================================
-    // COMMIT 3 — Add & Delete
-    // ================================
-
     addStickie() {
-      // TODO (Commit 3):
       // Add a new object to this.stickies
-      //
-      // Required structure:
-      // { id: ..., text: "" }
-      //
-      // For id:
-      // - Use crypto.randomUUID() if available
-      // - Otherwise use a fallback (Date.now() + Math.random())
+      this.stickies.push({ id: crypto.randomUUID(), text: "" });
     },
 
     deleteStickie(id) {
-      // TODO (Commit 3):
       // Remove the note that matches the provided id.
-      //
-      // Use Array.filter()
       // Reassign the result back to this.stickies
+      this.stickies = this.stickies.filter((stickie) => stickie.id !== id);
     },
 
     // ================================
