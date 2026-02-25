@@ -3,6 +3,7 @@ Vue.createApp({
     return {
       stickies: [],
       storageKey: "sticky-notes-simple",
+      colors: ["#fcfa5d", "#ffd6ec", "#b6fcd5", "#d6eaff"],
     };
   },
 
@@ -13,13 +14,22 @@ Vue.createApp({
   methods: {
     addStickie() {
       // Add a new object to this.stickies
-      this.stickies.push({ id: crypto.randomUUID(), text: "" });
+      this.stickies.push({
+        id: crypto.randomUUID(),
+        text: "",
+        color: this.colors[0],
+      });
     },
 
     deleteStickie(id) {
       // Remove the note that matches the provided id.
       // Reassign the result back to this.stickies
       this.stickies = this.stickies.filter((stickie) => stickie.id !== id);
+    },
+
+    cycleColor(stickie) {
+      const idx = this.colors.indexOf(stickie.color);
+      stickie.color = this.colors[(idx + 1) % this.colors.length];
     },
 
     clearAll() {

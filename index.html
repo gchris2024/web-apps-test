@@ -18,13 +18,26 @@
       </p>
 
       <section class="grid" v-else>
-        <article class="note" v-for="stickie in stickies" :key="stickie.id">
+        <article
+          class="note"
+          v-for="stickie in stickies"
+          :key="stickie.id"
+          :style="{ backgroundColor: stickie.color }"
+        >
           <textarea
             v-model="stickie.text"
             placeholder="Type your note…"
           ></textarea>
 
           <div class="note-footer">
+            <button
+              class="color-btn"
+              @click="cycleColor(stickie)"
+              title="Change color"
+              :style="{ backgroundColor: stickie.color }"
+            >
+              🎨
+            </button>
             <span class="meta"> Chars: {{ charCount(stickie.text) }} </span>
 
             <button class="btn small" @click="deleteStickie(stickie.id)">
